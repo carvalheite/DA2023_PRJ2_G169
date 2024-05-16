@@ -120,7 +120,6 @@ bool FileReader::loadRealGraph(int n) {
             g->addVertex(id);
             g->findVertex(id)->setLatitude(lat);
             g->findVertex(id)->setLongitude(lon);
-            cout << "added node " << nodesNo << endl;
             nodesNo++;
         }
     }
@@ -146,7 +145,6 @@ bool FileReader::loadRealGraph(int n) {
         double dist = stod(strDist);
 
         g->addEdge(orig, dest, dist);
-        cout << "added edge " << edgesNo << endl;
         edgesNo++;
     }
 

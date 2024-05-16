@@ -7,13 +7,12 @@ using namespace std;
 int main() {
     Graph<int> g;
     FileReader fr(&g);
-    fr.loadRealGraph(3);
+    fr.loadRealGraph(1);
 
-    for (auto vertex : g.getVertexSet()){
-        for (auto edge : vertex->getAdj()) {
-            cout << vertex->getInfo() << " -> " << edge->getDest()->getInfo() << " : " << edge->getWeight() << endl;
-        }
-    }
+    Vertex<int> *v1 = g.findVertex(1);
+    Vertex<int> *v2 = g.findVertex(2);
+
+    cout << "Haversine distance between 1-2 is " << v1->haversineDistance(v2) << endl;
 
     return 0;
 }

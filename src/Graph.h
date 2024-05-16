@@ -12,6 +12,7 @@
 #include <limits>
 #include <algorithm>
 #include "MutablePriorityQueue.h"
+#include <cmath>
 
 template <class T>
 class Edge;
@@ -50,6 +51,7 @@ public:
     Edge<T> * addEdge(Vertex<T> *dest, double w);
     bool removeEdge(T in);
     void removeOutgoingEdges();
+    double haversineDistance(Vertex<T> *dest);
 
     friend class MutablePriorityQueue<Vertex>;
 protected:
@@ -330,6 +332,22 @@ void Vertex<T>::deleteEdge(Edge<T> *edge) {
         }
     }
     delete edge;
+}
+
+template <class T>
+double Vertex<T>::haversineDistance(Vertex<T> *dest) {
+    double lat1 = latitude * M_PI / 180;
+    double lon1 = longitude * M_PI / 180;
+    double lat2 = dest->latitude * M_PI / 180;
+    double lon2 = dest->longitude * M_PI / 180;
+
+    double dlat = lat2 - lat1;
+    double dlon = lon2 - lon1;
+
+    double aux = pow(sin(dlat / 2), 2) + cos(lat1) * cos(lat2) * pow(sin(dlon / 2), 2);
+    double c = 2 * atan2(sqrt(a), sqrt(1 - a));
+
+    return 6371000 * c;
 }
 
 /********************** Edge  ****************************/
