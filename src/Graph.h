@@ -135,6 +135,7 @@ public:
 
     int getNumVertex() const;
     std::vector<Vertex<T> *> getVertexSet() const;
+    void setVertexSet(std::vector<Vertex<T> *> newSet);
 
     std:: vector<T> dfs() const;
     std:: vector<T> dfs(const T & source) const;
@@ -156,7 +157,13 @@ protected:
     int findVertexIdx(const T &in) const;
 };
 
-void deleteMatrix(int **m, int n);
+    template<class T>
+    void Graph<T>::setVertexSet(std::vector<Vertex<T> *> newSet) {
+        this->vertexSet = newSet;
+
+    }
+
+    void deleteMatrix(int **m, int n);
 void deleteMatrix(double **m, int n);
 
 
@@ -334,6 +341,7 @@ void Vertex<T>::deleteEdge(Edge<T> *edge) {
     delete edge;
 }
 
+/*
 template <class T>
 double Vertex<T>::haversineDistance(Vertex<T> *dest) {
     double lat1 = latitude * M_PI / 180;
@@ -349,7 +357,7 @@ double Vertex<T>::haversineDistance(Vertex<T> *dest) {
 
     return 6371000 * c;
 }
-
+*/
 /********************** Edge  ****************************/
 
 template <class T>

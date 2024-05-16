@@ -68,7 +68,7 @@ bool FileReader::loadToyGraph(int n) {
             g->findVertex(dest)->setLabel(dLabel);
         }
 
-        g->addEdge(orig, dest, dist);
+        g->addBidirectionalEdge(orig, dest, dist);
     }
 
     return true;
@@ -144,7 +144,7 @@ bool FileReader::loadRealGraph(int n) {
         int orig = stoi(strOrig), dest = stoi(strDest);
         double dist = stod(strDist);
 
-        g->addEdge(orig, dest, dist);
+        g->addBidirectionalEdge(orig, dest, dist);
         edgesNo++;
     }
 

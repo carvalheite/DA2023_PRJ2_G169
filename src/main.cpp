@@ -1,18 +1,21 @@
 #include <iostream>
 #include "Graph.h"
 #include "FileReader.h"
+#include "backtraking.h"
 
 using namespace std;
 
 int main() {
     Graph<int> g;
     FileReader fr(&g);
-    fr.loadRealGraph(1);
+    fr.loadToyGraph(3);
 
-    Vertex<int> *v1 = g.findVertex(1);
-    Vertex<int> *v2 = g.findVertex(2);
-
-    cout << "Haversine distance between 1-2 is " << v1->haversineDistance(v2) << endl;
+    vector<int> res;
+    double a = backtracking(g,res);
+    cout << a<<endl;
+    for(auto x : res){
+        cout << "ID: " << x << endl;
+    }
 
     return 0;
 }
