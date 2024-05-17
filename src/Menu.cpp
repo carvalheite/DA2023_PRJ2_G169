@@ -1,0 +1,260 @@
+//
+// Created by miguel on 17-05-2024.
+//
+
+#include "Menu.h"
+
+Menu::Menu() : g(), data(&g) { // Properly initialize g and data
+}
+
+void Menu::run(){
+    mainMenu();
+}
+
+void Menu::mainMenu(){
+    char op;
+    cout << "__________________________________________\n";
+    cout << "|                MainMenu                |\n";
+    cout << "|        Choose one of the options       |\n";
+    cout << "|________________________________________|\n";
+    cout << "|      1. Toy-Graphs                     |\n";
+    cout << "|      2. Real-world Graphs              |\n";
+    cout << "|      3. Extra-Fully-Connected Graphs   |\n";
+    cout << "|      \033[31mq. QUIT \033[0m                          |\n";
+    cout << "|________________________________________|\n";
+    cout << "Your option:";
+    cin >> op;
+    switch(op)
+    {
+        case '1':
+            ToyGraphsMenu();
+            break;
+        case '2':
+            RealworldGraphsMenu();
+            break;
+        case '3':
+            ExtraFullyConnectedGraphsMenu();
+            break;
+        case 'q':
+            cout << "End" << endl;
+            break;
+        default:
+            cout << "Invalid Option..." << endl;
+            mainMenu();
+            break;
+    }
+}
+
+void Menu::ToyGraphsMenu(){
+    char op;
+    cout << "__________________________________________\n";
+    cout << "|                Toy-Graphs              |\n";
+    cout << "|        Choose one of the options       |\n";
+    cout << "|________________________________________|\n";
+    cout << "|      1. Shipping                       |\n";
+    cout << "|      2. Stadiums                       |\n";
+    cout << "|      3. Tourism                        |\n";
+    cout << "|      \033[31mq. Go back \033[0m                       |\n";
+    cout << "|________________________________________|\n";
+    cout << "Your option:";
+    cin >> op;
+    switch(op)
+    {
+        case '1':
+            data.loadToyGraph(1);
+            OperationsMenu(1);
+            break;
+        case '2':
+            data.loadToyGraph(2);
+            OperationsMenu(1);
+            break;
+        case '3':
+            data.loadToyGraph(3);
+            OperationsMenu(1);
+            break;
+        case 'q':
+            mainMenu();
+            break;
+        default:
+            cout << "Invalid Option..." << endl;
+            ToyGraphsMenu();
+            break;
+    }
+}
+void Menu::RealworldGraphsMenu(){
+    char op;
+    cout << "__________________________________________\n";
+    cout << "|            Real-world Graphs           |\n";
+    cout << "|        Choose one of the options       |\n";
+    cout << "|________________________________________|\n";
+    cout << "|      1. Graph 1                        |\n";
+    cout << "|      2. Graph 2                        |\n";
+    cout << "|      3. Graph 3                        |\n";
+    cout << "|      \033[31mq. Go back \033[0m                       |\n";
+    cout << "|________________________________________|\n";
+    cout << "Your option:";
+    cin >> op;
+    switch(op)
+    {
+        case '1':
+            data.loadRealGraph(1);
+            OperationsMenu(2);
+            break;
+        case '2':
+            data.loadRealGraph(2);
+            OperationsMenu(2);
+            break;
+        case '3':
+            data.loadRealGraph(3);
+            OperationsMenu(2);
+            break;
+        case 'q':
+            mainMenu();
+            break;
+        default:
+            cout << "Invalid Option..." << endl;
+            RealworldGraphsMenu();
+            break;
+    }
+}
+
+void Menu::ExtraFullyConnectedGraphsMenu(){
+    char op;
+    cout << "__________________________________________\n";
+    cout << "|       Extra Fully Connected Graphs     |\n";
+    cout << "|        Choose one of the options       |\n";
+    cout << "|________________________________________|\n";
+    cout << "|      1. Edges 25                       |\n";
+    cout << "|      2. Edges 50                       |\n";
+    cout << "|      3. Edges 75                       |\n";
+    cout << "|      4. Edges 100                      |\n";
+    cout << "|      5. Edges 200                      |\n";
+    cout << "|      6. Edges 300                      |\n";
+    cout << "|      7. Edges 400                      |\n";
+    cout << "|      8. Edges 500                      |\n";
+    cout << "|      9. Edges 600                      |\n";
+    cout << "|      10. Edges 700                     |\n";
+    cout << "|      11. Edges 800                     |\n";
+    cout << "|      12. Edges 900                     |\n";
+    cout << "|      \033[31mq. Go back \033[0m                       |\n";
+    cout << "|________________________________________|\n";
+    cout << "Your option:";
+    cin >> op;
+    switch(op)
+    {
+        case '1':
+            //data.loadExtraGraph(1);
+            OperationsMenu(3);
+            break;
+        case '2':
+            //data.loadExtraGraph(2);
+            OperationsMenu(3);
+            break;
+        case '3':
+            //data.loadExtraGraph(3);
+            OperationsMenu(3);
+            break;
+        case '4':
+            //data.loadExtraGraph(4);
+            OperationsMenu(3);
+            break;
+        case '5':
+            //data.loadExtraGraph(5);
+            OperationsMenu(3);
+            break;
+        case '6':
+            //data.loadExtraGraph(6);
+            OperationsMenu(3);
+            break;
+        case '7':
+            //data.loadExtraGraph(7);
+            OperationsMenu(3);
+            break;
+        case '8':
+            //data.loadExtraGraph(8);
+            OperationsMenu(3);
+            break;
+        case '9':
+            //data.loadExtraGraph(9);
+            OperationsMenu(3);
+            break;
+        case '10':
+            //data.loadExtraGraph(10);
+            OperationsMenu(3);
+            break;
+        case '11':
+            //data.loadExtraGraph(11);
+            OperationsMenu(3);
+            break;
+        case '12':
+            //data.loadExtraGraph(12);
+            OperationsMenu(3);
+            break;
+        case 'q':
+            mainMenu();
+            break;
+        default:
+            cout << "Invalid Option..." << endl;
+            ExtraFullyConnectedGraphsMenu();
+            break;
+    }
+}
+
+void Menu::OperationsMenu(int mode) {
+    char op;
+    cout << "__________________________________________\n";
+    cout << "|               Operations               |\n";
+    cout << "|        Choose one of the options       |\n";
+    cout << "|________________________________________|\n";
+    cout << "|      1. Backtracking Algorithm         |\n";
+    cout << "|      2. Triangular Approximation       |\n";
+    cout << "|      3. Other Heuristic                |\n";
+    cout << "|      4. TSP in the Real World          |\n";
+    cout << "|      \033[31mq. Go back \033[0m                       |\n";
+    cout << "|________________________________________|\n";
+    cout << "Your option:";
+    cin >> op;
+    switch(op)
+    {
+        case '1':
+            // add here the function with the Backtracking Algorithm
+            OperationsMenu(mode);
+            break;
+        case '2':
+            // add here the function with the Triangular Approximation Algorithm
+            OperationsMenu(mode);
+            break;
+        case '3':
+            // add here the function with the Other Heuristic Algorithm
+            OperationsMenu(mode);
+            break;
+        case '4':
+            // add here the function with the TSP in the Real World Algorithm
+            OperationsMenu(mode);
+            break;
+        case 'q':
+            switch(mode)
+            {
+                case 1:
+                    ToyGraphsMenu();
+                    break;
+                case 2:
+                    RealworldGraphsMenu();
+                    break;
+                case 3:
+                    ExtraFullyConnectedGraphsMenu();
+                    break;
+                default:
+                    cout << "Invalid Option..." << endl;
+                    OperationsMenu(mode);
+                    break;
+            }
+            break;
+        default:
+            cout << "Invalid Option..." << endl;
+            OperationsMenu(mode);
+            break;
+    }
+}
+
+
