@@ -52,6 +52,7 @@ public:
     bool removeEdge(T in);
     void removeOutgoingEdges();
     double haversineDistance(Vertex<T> *dest);
+    double haversineDistance(T destination);
 
     friend class MutablePriorityQueue<Vertex>;
 protected:
@@ -345,7 +346,7 @@ double Vertex<T>::haversineDistance(Vertex<T> *dest) {
     double dlon = lon2 - lon1;
 
     double aux = pow(sin(dlat / 2), 2) + cos(lat1) * cos(lat2) * pow(sin(dlon / 2), 2);
-    double c = 2 * atan2(sqrt(a), sqrt(1 - a));
+    double c = 2 * atan2(sqrt(aux), sqrt(1 - aux));
 
     return 6371000 * c;
 }
