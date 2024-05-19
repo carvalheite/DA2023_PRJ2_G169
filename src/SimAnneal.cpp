@@ -2,8 +2,8 @@
 // Created by crvlh8 on 5/16/24.
 //
 
+#include "SimAnneal.h"
 #include <random>
-
 #include "Graph.h"
 
 using namespace std;
@@ -22,20 +22,27 @@ vector<Vertex<int>*> simulatedAnnealing(Graph<int> *g, int firstCity) {
     Vertex<int>* firstVertex = g->findVertex(firstCity);
     int cityNum = g->getVertexSet().size() - 1;
     vector<Vertex<int>*> currentPath, newPath;
-    double currentCost, newCost, temperature = 100000, coolingRate = 0.99;
+    double currentCost, newCost, temperature = 10000, coolingRate = 0.1;
 
     for (auto vertex : g->getVertexSet()) {
         if (vertex != firstVertex)
             currentPath.push_back(vertex);
     }
 
-    shuffle(currentPath.begin(), currentPath.end(), std::mt19937(std::random_device()()));
+    random_device rd;
+    mt19937 gen(rd());
+    shuffle(currentPath.begin(), currentPath.end(), gen);
     currentCost = calculateDistance(currentPath, firstVertex);
+
+    uniform_real_distribution<double> distribution(0.0, 1.0);
 
     while (temperature > 1) {
         newPath = currentPath;
-        int pos1 = rand() % cityNum;
-        int pos2 = rand() % cityNum;
+        int pos1, pos2;
+        do {
+            pos1 = rand() % cityNum;
+            pos2 = rand() % cityNum;
+        } while (pos1 == pos2);
 
         if (pos1 == firstCity or pos2 == firstCity)
             continue;
@@ -47,7 +54,7 @@ vector<Vertex<int>*> simulatedAnnealing(Graph<int> *g, int firstCity) {
 
         double delta = newCost - currentCost;
 
-        if (delta < 0 || exp(-delta / temperature) > (double)rand() / RAND_MAX) {
+        if (delta < 0 || exp(-delta / temperature) > distribution(gen)) {
             currentPath = newPath;
             currentCost = newCost;
         }
