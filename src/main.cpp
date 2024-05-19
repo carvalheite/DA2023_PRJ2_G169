@@ -2,6 +2,7 @@
 #include "Graph.h"
 #include "FileReader.h"
 #include "backtraking.h"
+#include "2approximation.h"
 
 using namespace std;
 
@@ -9,13 +10,13 @@ int main() {
     Graph<int> g;
     FileReader fr(&g);
     fr.loadToyGraph(3);
+    double res;
+    vector<int> s;
 
-    vector<int> res;
-    double a = backtracking(g,res);
-    cout << a<<endl;
-    for(auto x : res){
-        cout << "ID: " << x << endl;
-    }
+    primMST(g,res);
 
+    cout  <<res;
+    cout << "\nBacktracking: " << backtracking(g,s);
     return 0;
+
 }

@@ -25,7 +25,7 @@ template <class T>
 class Vertex {
 public:
     explicit Vertex(T in, double latitude = 0, double longitude = 0, std::string label = "");
-    bool operator<(Vertex<T> & vertex) const; // // required by MutablePriorityQueue
+    bool operator<(Vertex<T> & vertex) const;
 
     T getInfo() const;
     std::vector<Edge<T> *> getAdj() const;
@@ -535,6 +535,7 @@ std::vector<T> Graph<T>::dfs() const {
             dfsVisit(v, res);
     return res;
 }
+
 
 /*
  * Performs a depth-first search (dfs) in a graph (this) from the source node.

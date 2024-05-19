@@ -7,4 +7,5 @@ add_executable(DA2023_PRJ2_G169 src/main.cpp
         src/FileReader.cpp
         src/backtraking.h
         src/Timer.h
-        src/Timer.cpp)
+        src/Timer.cpp
+        src/2approximation.h)

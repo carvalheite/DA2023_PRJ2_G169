@@ -120,6 +120,7 @@ void recursiveVisit(Graph<T>& g, std::vector<int>& bestPath, double& bestDistanc
 
 template <class T>
 double backtracking(Graph<T>& g, std::vector<int>& bestPath){
+    for(auto v:g.getVertexSet()){v->setVisited(false);}
     Timer timer;
     timer.start();
     bestPath.resize(g.getNumVertex());
