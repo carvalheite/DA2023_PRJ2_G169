@@ -2,6 +2,8 @@
 #include <iostream>
 #include <numeric>
 #include <set>
+#include <unordered_set>
+#include <cfloat>
 #include "../src/Graph.h"
 #include "../src/MutablePriorityQueue.h"
 #include "./MutablePriorityQueue.h"
@@ -9,11 +11,87 @@
 using namespace std;
 
 
+using namespace std;
+
+template<typename T>
+class UnionFind {
+private:
+    std::unordered_map<T, T> parent;
+
+public:
+    UnionFind(const std::vector<T>& elements) {
+        for (const T& element : elements) {
+            parent[element] = element;
+        }
+    }
+
+    T find(const T& element) {
+        if (parent[element] == element) {
+            return element;
+        }
+        return parent[element] = find(parent[element]);
+    }
+
+    void merge(const T& x, const T& y) {
+        T rootX = find(x);
+        T rootY = find(y);
+        if (rootX != rootY) {
+            parent[rootX] = rootY;
+        }
+    }
+};
+
+template<typename T>
+void ensureFullyConnected(Graph<T>& graph) {
+    std::vector<Vertex<T>*> vertices = graph.getVertexSet();
+
+    // Extract vertex information from the vertex pointers
+    std::vector<T> vertexInfo;
+    for (Vertex<T>* vertex : vertices) {
+        vertexInfo.push_back(vertex->getInfo());
+    }
+
+    UnionFind<T> uf(vertexInfo);  // Initialize Union-Find with all vertices
+
+    // Merge vertices based on existing edges
+    for (Vertex<T>* vertex : vertices) {
+        for (Edge<T>* edge : vertex->getAdj()) {
+            Vertex<T>* neighbor = edge->getDest();
+            uf.merge(vertex->getInfo(), neighbor->getInfo());
+        }
+    }
+
+    // Add edges between disconnected components
+    for (Vertex<T>* u : vertices) {
+        for (Vertex<T>* v : vertices) {
+            if (u != v && uf.find(u->getInfo()) != uf.find(v->getInfo())) {
+                // Add an edge between u and v with a very high weight
+                graph.addBidirectionalEdge(u->getInfo(), v->getInfo(), DBL_MAX);
+                uf.merge(u->getInfo(), v->getInfo());
+            }
+        }
+    }
+}
+template<typename T>
+bool isConnected(const Graph<T>& graph) {
+
+    graph.bfs(0);
+
+    for(Vertex<T>* v : graph.getVertexSet()){
+        if(!v->isVisited()){
+            return false;
+        }
+    }
+    return true;
+}
 
 template <class T>
 std::vector<Vertex<T> *> primMST(Graph<T> &graph,double &tourDistance) {
     Timer timer;
     timer.start();
+
+    if(!isConnected(graph)) {ensureFullyConnected(graph); }
+
     for (Vertex<T>* vertex : graph.getVertexSet()) {
         vertex->setVisited(false);
         vertex->setDist(std::numeric_limits<double>::infinity());
@@ -109,3 +187,6 @@ void fullyConnect(Graph<T> &g){
     //make it fully connected
 
 }
+
+
+
