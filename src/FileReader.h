@@ -41,7 +41,7 @@ public:
     * @return true if the graph is loaded successfully, false otherwise.
     * @complexity O(V + E) where V is the number of vertices and E is the number of edges in the graph.
     */
-    // bool loadExtraGraph(int n);
+     bool loadExtraGraph(int n);
 
 private:
     Graph<int> *g; ///< Pointer to the Graph object to be populated.

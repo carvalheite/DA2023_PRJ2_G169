@@ -146,51 +146,51 @@ void Menu::ExtraFullyConnectedGraphsMenu(){
     switch(op)
     {
         case '1':
-            //data.loadExtraGraph(1);
+            data.loadExtraGraph(25);
             OperationsMenu(3);
             break;
         case '2':
-            //data.loadExtraGraph(2);
+            data.loadExtraGraph(50);
             OperationsMenu(3);
             break;
         case '3':
-            //data.loadExtraGraph(3);
+            data.loadExtraGraph(75);
             OperationsMenu(3);
             break;
         case '4':
-            //data.loadExtraGraph(4);
+            data.loadExtraGraph(100);
             OperationsMenu(3);
             break;
         case '5':
-            //data.loadExtraGraph(5);
+            data.loadExtraGraph(200);
             OperationsMenu(3);
             break;
         case '6':
-            //data.loadExtraGraph(6);
+            data.loadExtraGraph(300);
             OperationsMenu(3);
             break;
         case '7':
-            //data.loadExtraGraph(7);
+            data.loadExtraGraph(400);
             OperationsMenu(3);
             break;
         case '8':
-            //data.loadExtraGraph(8);
+            data.loadExtraGraph(500);
             OperationsMenu(3);
             break;
         case '9':
-            //data.loadExtraGraph(9);
+            data.loadExtraGraph(600);
             OperationsMenu(3);
             break;
         case '10':
-            //data.loadExtraGraph(10);
+            data.loadExtraGraph(700);
             OperationsMenu(3);
             break;
         case '11':
-            //data.loadExtraGraph(11);
+            data.loadExtraGraph(800);
             OperationsMenu(3);
             break;
         case '12':
-            //data.loadExtraGraph(12);
+            data.loadExtraGraph(900);
             OperationsMenu(3);
             break;
         case 'q':
