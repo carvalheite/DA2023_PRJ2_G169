@@ -25,7 +25,7 @@ template <class T>
 class Vertex {
 public:
     explicit Vertex(T in, double latitude = 0, double longitude = 0, std::string label = "");
-    bool operator<(Vertex<T> & vertex) const; // // required by MutablePriorityQueue
+    bool operator<(Vertex<T> & vertex) const;
 
     T getInfo() const;
     std::vector<Edge<T> *> getAdj() const;
@@ -135,11 +135,14 @@ public:
 
     int getNumVertex() const;
     std::vector<Vertex<T> *> getVertexSet() const;
+    void setVertexSet(std::vector<Vertex<T> *> newSet);
 
     std:: vector<T> dfs() const;
     std:: vector<T> dfs(const T & source) const;
     void dfsVisit(Vertex<T> *v,  std::vector<T> & res) const;
     std::vector<T> bfs(const T & source) const;
+    bool existsEdge(int vertex1,int vertex2) const ;
+
 
     bool isDAG() const;
     bool dfsIsDAG(Vertex<T> *v) const;
@@ -153,6 +156,8 @@ public:
     }
 protected:
     std::vector<Vertex<T> *> vertexSet;    // vertex set
+    std::unordered_map<int, std::pair<double, double>> coordinates;
+
 
     double ** distMatrix = nullptr;   // dist matrix for Floyd-Warshall
     int **pathMatrix = nullptr;   // path matrix for Floyd-Warshall
@@ -163,7 +168,13 @@ protected:
     int findVertexIdx(const T &in) const;
 };
 
-void deleteMatrix(int **m, int n);
+    template<class T>
+    void Graph<T>::setVertexSet(std::vector<Vertex<T> *> newSet) {
+        this->vertexSet = newSet;
+
+    }
+
+    void deleteMatrix(int **m, int n);
 void deleteMatrix(double **m, int n);
 
 
@@ -341,13 +352,13 @@ void Vertex<T>::deleteEdge(Edge<T> *edge) {
     delete edge;
 }
 
+
 template <class T>
 double Vertex<T>::haversineDistance(Vertex<T> *dest) {
     double lat1 = latitude * M_PI / 180;
     double lon1 = longitude * M_PI / 180;
     double lat2 = dest->latitude * M_PI / 180;
     double lon2 = dest->longitude * M_PI / 180;
-
     double dlat = lat2 - lat1;
     double dlon = lon2 - lon1;
 
@@ -355,7 +366,8 @@ double Vertex<T>::haversineDistance(Vertex<T> *dest) {
     double c = 2 * atan2(sqrt(aux), sqrt(1 - aux));
 
     return 6371000 * c;
-}
+    }
+
 
 /********************** Edge  ****************************/
 
@@ -419,6 +431,7 @@ std::vector<Vertex<T> *> Graph<T>::getVertexSet() const {
     return vertexSet;
 }
 
+
 /*
  * Auxiliary function to find a vertex with a given content.
  */
@@ -428,6 +441,18 @@ Vertex<T> * Graph<T>::findVertex(const T &in) const {
         if (v->getInfo() == in)
             return v;
     return nullptr;
+}
+
+template <class T>
+bool Graph<T>::existsEdge(int vertex1,int vertex2) const {
+    Vertex<T>* v1 = this->findVertex(vertex1);
+    Vertex<T>* v2 = this->findVertex(vertex2);
+    for(Edge<T>* e : v1->getAdj()){
+        if(e->getDest()==v2){
+            return true;
+        }
+    }
+    return false;
 }
 
 /*
@@ -534,6 +559,7 @@ std::vector<T> Graph<T>::dfs() const {
             dfsVisit(v, res);
     return res;
 }
+
 
 /*
  * Performs a depth-first search (dfs) in a graph (this) from the source node.
