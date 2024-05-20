@@ -1,3 +1,8 @@
+/**
+ * @file MSTGraph.h
+ * @brief This file contains the implementation of the Minimum Spanning Tree (MST) algorithms and related helper functions.
+ */
+
 #include <vector>
 #include <iostream>
 #include <numeric>
@@ -10,21 +15,35 @@
 
 using namespace std;
 
-
-using namespace std;
-
+/**
+ * @class UnionFind
+ * @brief A class that implements the Union-Find (Disjoint Set Union) data structure.
+ *
+ * @tparam T The type of the elements in the Union-Find structure.
+ */
 template<typename T>
 class UnionFind {
 private:
-    std::unordered_map<T, T> parent;
+    std::unordered_map<T, T> parent; /**< Stores the parent of each element. */
 
 public:
+    /**
+     * @brief Constructs a UnionFind object with a given set of elements.
+     *
+     * @param elements A vector containing all the elements.
+     */
     UnionFind(const std::vector<T>& elements) {
         for (const T& element : elements) {
             parent[element] = element;
         }
     }
 
+    /**
+     * @brief Finds the root of the element with path compression.
+     *
+     * @param element The element to find.
+     * @return The root of the element.
+     */
     T find(const T& element) {
         if (parent[element] == element) {
             return element;
@@ -32,6 +51,12 @@ public:
         return parent[element] = find(parent[element]);
     }
 
+    /**
+     * @brief Merges two sets containing the given elements.
+     *
+     * @param x The first element.
+     * @param y The second element.
+     */
     void merge(const T& x, const T& y) {
         T rootX = find(x);
         T rootY = find(y);
@@ -41,6 +66,12 @@ public:
     }
 };
 
+/**
+ * @brief Ensures the graph is fully connected by adding high-weight edges between disconnected components.
+ *
+ * @tparam T The type of the vertices.
+ * @param graph The graph to be made fully connected.
+ */
 template<typename T>
 void ensureFullyConnected(Graph<T>& graph) {
     std::vector<Vertex<T>*> vertices = graph.getVertexSet();
@@ -72,25 +103,42 @@ void ensureFullyConnected(Graph<T>& graph) {
         }
     }
 }
+
+/**
+ * @brief Checks if the graph is fully connected.
+ *
+ * @tparam T The type of the vertices.
+ * @param graph The graph to be checked.
+ * @return True if the graph is fully connected, false otherwise.
+ */
 template<typename T>
 bool isConnected(const Graph<T>& graph) {
-
     graph.bfs(0);
 
-    for(Vertex<T>* v : graph.getVertexSet()){
-        if(!v->isVisited()){
+    for (Vertex<T>* v : graph.getVertexSet()) {
+        if (!v->isVisited()) {
             return false;
         }
     }
     return true;
 }
 
+/**
+ * @brief Computes the Minimum Spanning Tree (MST) of the given graph using Prim's algorithm and returns a Hamiltonian cycle.
+ *
+ * @tparam T The type of the vertices.
+ * @param graph The graph for which the MST is computed.
+ * @param tourDistance A reference to a double that will store the total distance of the tour.
+ * @return A vector of vertices representing the Hamiltonian cycle.
+ */
 template <class T>
-std::vector<Vertex<T> *> primMST(Graph<T> &graph,double &tourDistance) {
+std::vector<Vertex<T> *> primMST(Graph<T> &graph, double &tourDistance) {
     Timer timer;
     timer.start();
 
-    if(!isConnected(graph)) {ensureFullyConnected(graph); }
+    if (!isConnected(graph)) {
+        ensureFullyConnected(graph);
+    }
 
     for (Vertex<T>* vertex : graph.getVertexSet()) {
         vertex->setVisited(false);
@@ -117,7 +165,7 @@ std::vector<Vertex<T> *> primMST(Graph<T> &graph,double &tourDistance) {
             double weight = neighbourEdge->getWeight();
 
             if (!neighbour->isVisited() && weight < neighbour->getDist()) {
-                if(std::numeric_limits<double>::infinity()==neighbour->getDist())priorityQueue.insert(neighbour);
+                if (std::numeric_limits<double>::infinity() == neighbour->getDist()) priorityQueue.insert(neighbour);
                 neighbour->setDist(weight);
                 neighbour->setPath(neighbourEdge);
                 priorityQueue.decreaseKey(neighbour);
@@ -125,39 +173,38 @@ std::vector<Vertex<T> *> primMST(Graph<T> &graph,double &tourDistance) {
         }
     }
 
-    //create a graph representing the mst
+    // Create a graph representing the MST
     Graph<int> mstGraph;
-    for(Vertex<T>* vertex : mst){
+    for (Vertex<T>* vertex : mst) {
         mstGraph.addVertex(vertex->getInfo());
-        if(vertex->getPath()!= nullptr)mstGraph.addBidirectionalEdge(vertex->getPath()->getOrig()->getInfo(),vertex->getPath()->getDest()->getInfo(),vertex->getPath()->getWeight());
+        if (vertex->getPath() != nullptr) mstGraph.addBidirectionalEdge(vertex->getPath()->getOrig()->getInfo(), vertex->getPath()->getDest()->getInfo(), vertex->getPath()->getWeight());
     }
 
     // Step 2: Create a tour by traversing the MST using DFS
     auto tour = mstGraph.dfs();
     tour.push_back(mstGraph.findVertex(0)->getInfo());
 
-    //Tour by vertexes
+    // Tour by vertices
     vector<Vertex<T>*> tourByPointer;
-    for(auto v : tour){
-        Vertex<T>* tempVertex =mstGraph.findVertex(v);
+    for (auto v : tour) {
+        Vertex<T>* tempVertex = mstGraph.findVertex(v);
         tourByPointer.push_back(tempVertex);
         tempVertex->setVisited(false);
     }
 
-    //remove duplicates
+    // Remove duplicates
     vector<Vertex<T>*> HamiltonianCycle;
-    for(auto v : tourByPointer){
-        if(!v->isVisited()){
+    for (auto v : tourByPointer) {
+        if (!v->isVisited()) {
             HamiltonianCycle.push_back(v);
         }
     }
 
-
-    //tour Distance
-    for(size_t iter = 0;iter<HamiltonianCycle.size()-1;iter++){
-        for(Edge<T>* edge : HamiltonianCycle[iter]->getAdj()){
-            if(edge->getDest()==HamiltonianCycle[iter+1]){
-                tourDistance+=edge->getWeight();
+    // Tour Distance
+    for (size_t iter = 0; iter < HamiltonianCycle.size() - 1; iter++) {
+        for (Edge<T>* edge : HamiltonianCycle[iter]->getAdj()) {
+            if (edge->getDest() == HamiltonianCycle[iter + 1]) {
+                tourDistance += edge->getWeight();
             }
         }
     }
@@ -166,27 +213,5 @@ std::vector<Vertex<T> *> primMST(Graph<T> &graph,double &tourDistance) {
     std::cout << "Function took: " << timer.getDurationInSeconds() << " s" << std::endl;
     return HamiltonianCycle;
 }
-
-template <class T>
-void fullyConnect(Graph<T> &g){
-
-    vector<Vertex<T>*> unvisited;
-
-    //check if fully connected
-    g.bfs(g.findVertex(0));
-    bool allVisited = true;
-    for(Vertex<T>* v : g.getVertexSet()){
-        if(!v->isVisited()){
-            allVisited = false;
-            unvisited.push_back(v);
-            g.bfs(v);
-        }
-    }
-    if(allVisited)return;
-
-    //make it fully connected
-
-}
-
 
 
