@@ -38,6 +38,7 @@ public:
     std::string getLabel() const;
     Edge<T> *getPath() const;
     std::vector<Edge<T> *> getIncoming() const;
+    Edge<T> *getEdge(T in) const;
 
     void setInfo(T info);
     void setVisited(bool visited);
@@ -52,7 +53,6 @@ public:
     bool removeEdge(T in);
     void removeOutgoingEdges();
     double haversineDistance(Vertex<T> *dest);
-    double haversineDistance(T destination);
 
     friend class MutablePriorityQueue<Vertex>;
 protected:
@@ -76,6 +76,8 @@ protected:
 
     void deleteEdge(Edge<T> *edge);
 };
+
+
 
 /********************** Edge  ****************************/
 
@@ -349,6 +351,16 @@ double Vertex<T>::haversineDistance(Vertex<T> *dest) {
     double c = 2 * atan2(sqrt(aux), sqrt(1 - aux));
 
     return 6371000 * c;
+}
+
+template<class T>
+Edge<T> *Vertex<T>::getEdge(T in) const {
+    for (auto e : adj) {
+        if (e->getDest()->getInfo() == in) {
+            return e;
+        }
+    }
+    return nullptr;
 }
 
 /********************** Edge  ****************************/
