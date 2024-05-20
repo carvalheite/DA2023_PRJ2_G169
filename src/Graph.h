@@ -13,8 +13,9 @@
 #include <algorithm>
 #include "MutablePriorityQueue.h"
 #include <cmath>
+#include <unordered_map>
 
-template <class T>
+    template <class T>
 class Edge;
 
 #define INF std::numeric_limits<double>::max()
