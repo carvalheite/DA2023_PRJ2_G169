@@ -44,6 +44,8 @@ public:
     /**
      * @brief Finds the nearest unvisited neighbor for the current vertex.
      *
+     * This function finds the nearest unvisited neighbor of a given vertex in the graph.
+     *
      * @param graph The graph representing the cities and distances between them.
      * @param current The current vertex.
      * @param visited A vector indicating whether each vertex has been visited.
@@ -52,7 +54,6 @@ public:
      * @complexity O(E), where E is the number of edges connected to the current vertex.
      */
     int nearestNeighbor(Graph<int> &graph, int current, const std::vector<bool> &visited);
-private:
 };
 
 #endif //DA2023_PRJ2_G169_REALWORLD_H

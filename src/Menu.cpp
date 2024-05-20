@@ -219,26 +219,47 @@ void Menu::OperationsMenu(int mode) {
     cin >> op;
     switch(op)
     {
-        case '1':
-            // add here the function with the Backtracking Algorithm
+        case '1': {
+            vector<int> tour;
+            double a = backtracking(g,tour);
+            for(auto x : tour){
+                cout  << x << "->" << endl;
+            }
+            cout << "TOUR DISTANCE: " << a << endl;
             OperationsMenu(mode);
             break;
-        case '2':
-            // add here the function with the Triangular Approximation Algorithm
+        }
+        case '2':{
+            double tourDistance;
+            auto prism = primMST(g,tourDistance);
+            for(auto z : prism){
+                cout << z->getInfo() <<"->";
+            }
+            cout << endl;
+            cout << "TOUR DISNTANCE: " << tourDistance<<endl;
             OperationsMenu(mode);
             break;
-        case '3':
-            // add here the function with the Other Heuristic Algorithm
+        }
+        case '3':{
+            vector<Vertex<int>*> path = nearestNeighbor(&g, 1);
+            for (auto & i : path)
+                cout << i->getInfo() << " ";
+            cout << endl;
+            cout << "Distance: " << calculateDistance(path) << endl;
+            cout << "Number of vertices: " << g.getVertexSet().size() << endl;
+            cout << "Number of visited cities: " << path.size() << endl;
             OperationsMenu(mode);
             break;
-        case '4':
+        }
+        case '4': {
             cout << "Where do you want to start:";
             int start;
             cin >> start;
             runTSPAlgorithm(start);
             OperationsMenu(mode);
             break;
-        case 'q':
+        }
+        case 'q': {
             switch(mode)
             {
                 case 1:
@@ -256,6 +277,7 @@ void Menu::OperationsMenu(int mode) {
                     break;
             }
             break;
+        }
         default:
             cout << "Invalid Option..." << endl;
             OperationsMenu(mode);

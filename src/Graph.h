@@ -34,7 +34,7 @@ public:
     bool isVisited() const;
     bool isProcessing() const;
     unsigned int getIndegree() const;
-    double getDist(Vertex<int> *pVertex) const;
+    double getDist() const;
     std::string getLabel() const;
     Edge<T> *getPath() const;
     std::vector<Edge<T> *> getIncoming() const;
@@ -265,7 +265,7 @@ unsigned int Vertex<T>::getIndegree() const {
 }
 
 template <class T>
-double Vertex<T>::getDist(Vertex<int> *pVertex) const {
+double Vertex<T>::getDist() const {
     return this->dist;
 }
 
