@@ -61,14 +61,17 @@ void Menu::ToyGraphsMenu(){
     switch(op)
     {
         case '1':
+            g.clear();
             data.loadToyGraph(1);
             OperationsMenu(1);
             break;
         case '2':
+            g.clear();
             data.loadToyGraph(2);
             OperationsMenu(1);
             break;
         case '3':
+            g.clear();
             data.loadToyGraph(3);
             OperationsMenu(1);
             break;
@@ -229,7 +232,10 @@ void Menu::OperationsMenu(int mode) {
             OperationsMenu(mode);
             break;
         case '4':
-            // add here the function with the TSP in the Real World Algorithm
+            cout << "Where do you want to start:";
+            int start;
+            cin >> start;
+            runTSPAlgorithm(start);
             OperationsMenu(mode);
             break;
         case 'q':
@@ -257,4 +263,19 @@ void Menu::OperationsMenu(int mode) {
     }
 }
 
+void Menu::runTSPAlgorithm(int start) {
+    RealWorld realWorldSolver;
+    auto result = realWorldSolver.solveTSP(g, start);
+
+    if (result.first.size() != g.getNumVertex() + 1 || result.first.back() != start) {
+        cout << "No path exists that visits all nodes and returns to the origin." << endl;
+    }else {
+        std::cout << "Best path: ";
+        for (int vertex : result.first) {
+            std::cout << vertex << " ";
+        }
+        std::cout << std::endl;
+        std::cout << "Distance: " << result.second << std::endl;
+    }
+}
 

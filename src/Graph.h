@@ -34,7 +34,7 @@ public:
     bool isVisited() const;
     bool isProcessing() const;
     unsigned int getIndegree() const;
-    double getDist() const;
+    double getDist(Vertex<int> *pVertex) const;
     std::string getLabel() const;
     Edge<T> *getPath() const;
     std::vector<Edge<T> *> getIncoming() const;
@@ -144,6 +144,13 @@ public:
     bool isDAG() const;
     bool dfsIsDAG(Vertex<T> *v) const;
     std::vector<T> topsort() const;
+    void clear() {
+        // Delete all vertices
+        for (auto vertex : vertexSet) {
+            delete vertex;
+        }
+        vertexSet.clear();
+    }
 protected:
     std::vector<Vertex<T> *> vertexSet;    // vertex set
 
@@ -244,7 +251,7 @@ unsigned int Vertex<T>::getIndegree() const {
 }
 
 template <class T>
-double Vertex<T>::getDist() const {
+double Vertex<T>::getDist(Vertex<int> *pVertex) const {
     return this->dist;
 }
 

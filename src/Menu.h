@@ -11,6 +11,7 @@
 #include <iomanip>
 #include "FileReader.h"
 #include "Graph.h"
+#include "RealWorld.h"
 using namespace std;
 
 class Menu {
@@ -25,6 +26,7 @@ public:
     void RealworldGraphsMenu();
     void ExtraFullyConnectedGraphsMenu();
     void OperationsMenu(int mode);
+    void runTSPAlgorithm(int start);
 };
 
 
