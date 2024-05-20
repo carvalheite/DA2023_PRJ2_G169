@@ -1,0 +1,112 @@
+\hypertarget{classUnionFind}{}\doxysection{Union\+Find$<$ T $>$ Class Template Reference}
+\label{classUnionFind}\index{UnionFind$<$ T $>$@{UnionFind$<$ T $>$}}
+
+
+A class that implements the Union-\/\+Find (Disjoint Set Union) data structure.  
+
+
+
+
+{\ttfamily \#include $<$2approximation.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classUnionFind_a51802f5dc2a6ac827014455323909d9e}{Union\+Find}} (const std\+::vector$<$ T $>$ \&elements)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classUnionFind}{Union\+Find}} object with a given set of elements. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{classUnionFind_a85dfbb949b8c2be07352bc407bd7ae2e}{find}} (const T \&element)
+\begin{DoxyCompactList}\small\item\em Finds the root of the element with path compression. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classUnionFind_a6eb046aac8cbebf54a45a65683a8484f}{merge}} (const T \&x, const T \&y)
+\begin{DoxyCompactList}\small\item\em Merges two sets containing the given elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unordered\+\_\+map$<$ T, T $>$ \mbox{\hyperlink{classUnionFind_abbdcc48d4063511c5f2f6081efdf0721}{parent}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Union\+Find$<$ T $>$}
+
+A class that implements the Union-\/\+Find (Disjoint Set Union) data structure. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of the elements in the Union-\/\+Find structure. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classUnionFind_a51802f5dc2a6ac827014455323909d9e}\label{classUnionFind_a51802f5dc2a6ac827014455323909d9e}} 
+\index{UnionFind$<$ T $>$@{UnionFind$<$ T $>$}!UnionFind@{UnionFind}}
+\index{UnionFind@{UnionFind}!UnionFind$<$ T $>$@{UnionFind$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{UnionFind()}{UnionFind()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classUnionFind}{Union\+Find}}$<$ T $>$\+::\mbox{\hyperlink{classUnionFind}{Union\+Find}} (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{elements }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \mbox{\hyperlink{classUnionFind}{Union\+Find}} object with a given set of elements. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em elements} & A vector containing all the elements. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classUnionFind_a85dfbb949b8c2be07352bc407bd7ae2e}\label{classUnionFind_a85dfbb949b8c2be07352bc407bd7ae2e}} 
+\index{UnionFind$<$ T $>$@{UnionFind$<$ T $>$}!find@{find}}
+\index{find@{find}!UnionFind$<$ T $>$@{UnionFind$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{find()}{find()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classUnionFind}{Union\+Find}}$<$ T $>$\+::find (\begin{DoxyParamCaption}\item[{const T \&}]{element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Finds the root of the element with path compression. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & The element to find. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The root of the element. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classUnionFind_a6eb046aac8cbebf54a45a65683a8484f}\label{classUnionFind_a6eb046aac8cbebf54a45a65683a8484f}} 
+\index{UnionFind$<$ T $>$@{UnionFind$<$ T $>$}!merge@{merge}}
+\index{merge@{merge}!UnionFind$<$ T $>$@{UnionFind$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{merge()}{merge()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classUnionFind}{Union\+Find}}$<$ T $>$\+::merge (\begin{DoxyParamCaption}\item[{const T \&}]{x,  }\item[{const T \&}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Merges two sets containing the given elements. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The first element. \\
+\hline
+{\em y} & The second element. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classUnionFind_abbdcc48d4063511c5f2f6081efdf0721}\label{classUnionFind_abbdcc48d4063511c5f2f6081efdf0721}} 
+\index{UnionFind$<$ T $>$@{UnionFind$<$ T $>$}!parent@{parent}}
+\index{parent@{parent}!UnionFind$<$ T $>$@{UnionFind$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{parent}{parent}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::unordered\+\_\+map$<$T, T$>$ \mbox{\hyperlink{classUnionFind}{Union\+Find}}$<$ T $>$\+::parent\hspace{0.3cm}{\ttfamily [private]}}
+
+Stores the parent of each element. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/2approximation.\+h\end{DoxyCompactItemize}

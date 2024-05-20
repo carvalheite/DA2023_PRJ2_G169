@@ -1,0 +1,5 @@
+<map id="Menu" name="Menu">
+<area shape="rect" id="node1" title=" " alt="" coords="30,184,89,211"/>
+<area shape="rect" id="node2" href="$classGraph.html" title=" " alt="" coords="5,5,113,32"/>
+<area shape="rect" id="node3" href="$classFileReader.html" title="Handles loading graphs from files into a Graph object." alt="" coords="75,95,166,121"/>
+</map>

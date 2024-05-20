@@ -1,0 +1,121 @@
+\hypertarget{classFileReader}{}\doxysection{File\+Reader Class Reference}
+\label{classFileReader}\index{FileReader@{FileReader}}
+
+
+Handles loading graphs from files into a \mbox{\hyperlink{classGraph}{Graph}} object.  
+
+
+
+
+{\ttfamily \#include $<$File\+Reader.\+h$>$}
+
+
+
+Collaboration diagram for File\+Reader\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=161pt]{classFileReader__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFileReader_abda2046075eaad49870d82a9fbed68fa}{File\+Reader}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ int $>$ $\ast$\mbox{\hyperlink{classFileReader_a003a7fb0259120ddb9cba51fc26e4c50}{g}})
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classFileReader}{File\+Reader}} with a given graph. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classFileReader_a76ad122fea76cb8838edbe1b0c80c397}{load\+Toy\+Graph}} (int n)
+\begin{DoxyCompactList}\small\item\em Loads a toy graph from a file. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classFileReader_aaa40ae3abd8b56ef253a14e8fb49a767}{load\+Real\+Graph}} (int n)
+\begin{DoxyCompactList}\small\item\em Loads a real-\/world graph from a file. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classFileReader_ae2ea94fd03e9e38f9c17724499aa6ab7}{load\+Extra\+Graph}} (int n)
+\begin{DoxyCompactList}\small\item\em Loads a Extra graph from a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFileReader_a003a7fb0259120ddb9cba51fc26e4c50}\label{classFileReader_a003a7fb0259120ddb9cba51fc26e4c50}} 
+\mbox{\hyperlink{classGraph}{Graph}}$<$ int $>$ $\ast$ \mbox{\hyperlink{classFileReader_a003a7fb0259120ddb9cba51fc26e4c50}{g}}
+\begin{DoxyCompactList}\small\item\em Pointer to the \mbox{\hyperlink{classGraph}{Graph}} object to be populated. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles loading graphs from files into a \mbox{\hyperlink{classGraph}{Graph}} object. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classFileReader_abda2046075eaad49870d82a9fbed68fa}\label{classFileReader_abda2046075eaad49870d82a9fbed68fa}} 
+\index{FileReader@{FileReader}!FileReader@{FileReader}}
+\index{FileReader@{FileReader}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{FileReader()}{FileReader()}}
+{\footnotesize\ttfamily File\+Reader\+::\+File\+Reader (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ int $>$ $\ast$}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a \mbox{\hyperlink{classFileReader}{File\+Reader}} with a given graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Pointer to a \mbox{\hyperlink{classGraph}{Graph}} object. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classFileReader_ae2ea94fd03e9e38f9c17724499aa6ab7}\label{classFileReader_ae2ea94fd03e9e38f9c17724499aa6ab7}} 
+\index{FileReader@{FileReader}!loadExtraGraph@{loadExtraGraph}}
+\index{loadExtraGraph@{loadExtraGraph}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{loadExtraGraph()}{loadExtraGraph()}}
+{\footnotesize\ttfamily bool File\+Reader\+::load\+Extra\+Graph (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Loads a Extra graph from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & The number indicating which real-\/world graph to load. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the graph is loaded successfully, false otherwise. @complexity O(V + E) where V is the number of vertices and E is the number of edges in the graph. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classFileReader_aaa40ae3abd8b56ef253a14e8fb49a767}\label{classFileReader_aaa40ae3abd8b56ef253a14e8fb49a767}} 
+\index{FileReader@{FileReader}!loadRealGraph@{loadRealGraph}}
+\index{loadRealGraph@{loadRealGraph}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{loadRealGraph()}{loadRealGraph()}}
+{\footnotesize\ttfamily bool File\+Reader\+::load\+Real\+Graph (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Loads a real-\/world graph from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & The number indicating which real-\/world graph to load. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the graph is loaded successfully, false otherwise. @complexity O(V + E) where V is the number of vertices and E is the number of edges in the graph. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classFileReader_a76ad122fea76cb8838edbe1b0c80c397}\label{classFileReader_a76ad122fea76cb8838edbe1b0c80c397}} 
+\index{FileReader@{FileReader}!loadToyGraph@{loadToyGraph}}
+\index{loadToyGraph@{loadToyGraph}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{loadToyGraph()}{loadToyGraph()}}
+{\footnotesize\ttfamily bool File\+Reader\+::load\+Toy\+Graph (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Loads a toy graph from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & The number indicating which toy graph to load. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the graph is loaded successfully, false otherwise. @complexity O(V + E) where V is the number of vertices and E is the number of edges in the graph. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/File\+Reader.\+h\item 
+src/File\+Reader.\+cpp\end{DoxyCompactItemize}

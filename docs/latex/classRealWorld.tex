@@ -1,0 +1,87 @@
+\hypertarget{classRealWorld}{}\doxysection{Real\+World Class Reference}
+\label{classRealWorld}\index{RealWorld@{RealWorld}}
+
+
+A class to solve the Traveling Salesman Problem (T\+SP) using a nearest neighbor heuristic.  
+
+
+
+
+{\ttfamily \#include $<$Real\+World.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRealWorld_abe9ff3856ef50361d016d27f868738ee}\label{classRealWorld_abe9ff3856ef50361d016d27f868738ee}} 
+\mbox{\hyperlink{classRealWorld_abe9ff3856ef50361d016d27f868738ee}{Real\+World}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classRealWorld}{Real\+World}} class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRealWorld_a45f0e1a6172c6a4c58eca6bbd296ff30}\label{classRealWorld_a45f0e1a6172c6a4c58eca6bbd296ff30}} 
+\mbox{\hyperlink{classRealWorld_a45f0e1a6172c6a4c58eca6bbd296ff30}{$\sim$\+Real\+World}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \mbox{\hyperlink{classRealWorld}{Real\+World}} class. \end{DoxyCompactList}\item 
+pair$<$ vector$<$ int $>$, double $>$ \mbox{\hyperlink{classRealWorld_aca2e4f47c0ddd0c6fd5442b39d4a33c3}{solve\+T\+SP}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ int $>$ \&graph, int start)
+\begin{DoxyCompactList}\small\item\em Solves the Traveling Salesman Problem (T\+SP) for the given graph starting from a specified vertex. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classRealWorld_afeb81e8df2d83e3cfffe8d8a01bddf75}{nearest\+Neighbor}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ int $>$ \&graph, int current, const std\+::vector$<$ bool $>$ \&visited)
+\begin{DoxyCompactList}\small\item\em Finds the nearest unvisited neighbor for the current vertex. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class to solve the Traveling Salesman Problem (T\+SP) using a nearest neighbor heuristic. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRealWorld_afeb81e8df2d83e3cfffe8d8a01bddf75}\label{classRealWorld_afeb81e8df2d83e3cfffe8d8a01bddf75}} 
+\index{RealWorld@{RealWorld}!nearestNeighbor@{nearestNeighbor}}
+\index{nearestNeighbor@{nearestNeighbor}!RealWorld@{RealWorld}}
+\doxysubsubsection{\texorpdfstring{nearestNeighbor()}{nearestNeighbor()}}
+{\footnotesize\ttfamily int Real\+World\+::nearest\+Neighbor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ int $>$ \&}]{graph,  }\item[{int}]{current,  }\item[{const std\+::vector$<$ bool $>$ \&}]{visited }\end{DoxyParamCaption})}
+
+
+
+Finds the nearest unvisited neighbor for the current vertex. 
+
+This function finds the nearest unvisited neighbor of a given vertex in the graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & The graph representing the cities and distances between them. \\
+\hline
+{\em current} & The current vertex. \\
+\hline
+{\em visited} & A vector indicating whether each vertex has been visited. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of the nearest unvisited neighbor.
+\end{DoxyReturn}
+@complexity O(\+E), where E is the number of edges connected to the current vertex. \mbox{\Hypertarget{classRealWorld_aca2e4f47c0ddd0c6fd5442b39d4a33c3}\label{classRealWorld_aca2e4f47c0ddd0c6fd5442b39d4a33c3}} 
+\index{RealWorld@{RealWorld}!solveTSP@{solveTSP}}
+\index{solveTSP@{solveTSP}!RealWorld@{RealWorld}}
+\doxysubsubsection{\texorpdfstring{solveTSP()}{solveTSP()}}
+{\footnotesize\ttfamily std\+::pair$<$ std\+::vector$<$ int $>$, double $>$ Real\+World\+::solve\+T\+SP (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ int $>$ \&}]{graph,  }\item[{int}]{start }\end{DoxyParamCaption})}
+
+
+
+Solves the Traveling Salesman Problem (T\+SP) for the given graph starting from a specified vertex. 
+
+This function implements a heuristic approach to solve the T\+SP by always choosing the nearest unvisited neighbor.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & The graph representing the cities and distances between them. \\
+\hline
+{\em start} & The starting vertex for the T\+SP tour. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pair containing the path (vector of vertices) and the total distance of the tour.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em invalid\+\_\+argument} & if the graph is not connected.\\
+\hline
+\end{DoxyExceptions}
+@complexity O(\+V$^\wedge$2), where V is the number of vertices in the graph. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Real\+World.\+h\item 
+src/Real\+World.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,121 @@
+\hypertarget{classTimer}{}\doxysection{Timer Class Reference}
+\label{classTimer}\index{Timer@{Timer}}
+
+
+A simple timer class for measuring durations.  
+
+
+
+
+{\ttfamily \#include $<$Timer.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTimer_a5f16e8da27d2a5a5242dead46de05d97}{Timer}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classTimer}{Timer}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTimer_a3a8b5272198d029779dc9302a54305a8}{start}} ()
+\begin{DoxyCompactList}\small\item\em Starts the timer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTimer_a63f0eb44b27402196590a03781515dba}{stop}} ()
+\begin{DoxyCompactList}\small\item\em Stops the timer. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classTimer_a09e892589cfa8a235722b89cb1170ae7}{get\+Duration\+In\+Seconds}} () const
+\begin{DoxyCompactList}\small\item\em Gets the duration of elapsed time in seconds. \end{DoxyCompactList}\item 
+long long \mbox{\hyperlink{classTimer_ae18a072d27d7ecc87ddb0589817e60bc}{get\+Duration\+In\+Milliseconds}} () const
+\begin{DoxyCompactList}\small\item\em Gets the duration of elapsed time in milliseconds. \end{DoxyCompactList}\item 
+long long \mbox{\hyperlink{classTimer_a8e1754adc759d50c5eb81898d29087b8}{get\+Duration\+In\+Microseconds}} () const
+\begin{DoxyCompactList}\small\item\em Gets the duration of elapsed time in microseconds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTimer_aa6afd9df5bd5d9ad4fe190c02aef0f9b}\label{classTimer_aa6afd9df5bd5d9ad4fe190c02aef0f9b}} 
+std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::high\+\_\+resolution\+\_\+clock $>$ {\bfseries start\+Time}
+\item 
+\mbox{\Hypertarget{classTimer_a968de36d21e28b242ff46d00a39542fd}\label{classTimer_a968de36d21e28b242ff46d00a39542fd}} 
+std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::high\+\_\+resolution\+\_\+clock $>$ {\bfseries end\+Time}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A simple timer class for measuring durations. 
+
+This class provides functionality to measure elapsed time using high-\/resolution clock provided by the C++ $<$chrono$>$ library. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTimer_a5f16e8da27d2a5a5242dead46de05d97}\label{classTimer_a5f16e8da27d2a5a5242dead46de05d97}} 
+\index{Timer@{Timer}!Timer@{Timer}}
+\index{Timer@{Timer}!Timer@{Timer}}
+\doxysubsubsection{\texorpdfstring{Timer()}{Timer()}}
+{\footnotesize\ttfamily Timer\+::\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \mbox{\hyperlink{classTimer}{Timer}} object. 
+
+Initializes the start and end time points. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTimer_a8e1754adc759d50c5eb81898d29087b8}\label{classTimer_a8e1754adc759d50c5eb81898d29087b8}} 
+\index{Timer@{Timer}!getDurationInMicroseconds@{getDurationInMicroseconds}}
+\index{getDurationInMicroseconds@{getDurationInMicroseconds}!Timer@{Timer}}
+\doxysubsubsection{\texorpdfstring{getDurationInMicroseconds()}{getDurationInMicroseconds()}}
+{\footnotesize\ttfamily long long Timer\+::get\+Duration\+In\+Microseconds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the duration of elapsed time in microseconds. 
+
+\begin{DoxyReturn}{Returns}
+The duration of elapsed time in microseconds. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTimer_ae18a072d27d7ecc87ddb0589817e60bc}\label{classTimer_ae18a072d27d7ecc87ddb0589817e60bc}} 
+\index{Timer@{Timer}!getDurationInMilliseconds@{getDurationInMilliseconds}}
+\index{getDurationInMilliseconds@{getDurationInMilliseconds}!Timer@{Timer}}
+\doxysubsubsection{\texorpdfstring{getDurationInMilliseconds()}{getDurationInMilliseconds()}}
+{\footnotesize\ttfamily long long Timer\+::get\+Duration\+In\+Milliseconds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the duration of elapsed time in milliseconds. 
+
+\begin{DoxyReturn}{Returns}
+The duration of elapsed time in milliseconds. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTimer_a09e892589cfa8a235722b89cb1170ae7}\label{classTimer_a09e892589cfa8a235722b89cb1170ae7}} 
+\index{Timer@{Timer}!getDurationInSeconds@{getDurationInSeconds}}
+\index{getDurationInSeconds@{getDurationInSeconds}!Timer@{Timer}}
+\doxysubsubsection{\texorpdfstring{getDurationInSeconds()}{getDurationInSeconds()}}
+{\footnotesize\ttfamily double Timer\+::get\+Duration\+In\+Seconds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the duration of elapsed time in seconds. 
+
+\begin{DoxyReturn}{Returns}
+The duration of elapsed time in seconds. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTimer_a3a8b5272198d029779dc9302a54305a8}\label{classTimer_a3a8b5272198d029779dc9302a54305a8}} 
+\index{Timer@{Timer}!start@{start}}
+\index{start@{start}!Timer@{Timer}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Timer\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Starts the timer. 
+
+Records the current time as the start time. \mbox{\Hypertarget{classTimer_a63f0eb44b27402196590a03781515dba}\label{classTimer_a63f0eb44b27402196590a03781515dba}} 
+\index{Timer@{Timer}!stop@{stop}}
+\index{stop@{stop}!Timer@{Timer}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void Timer\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Stops the timer. 
+
+Records the current time as the end time. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Timer.\+h\item 
+src/Timer.\+cpp\end{DoxyCompactItemize}
