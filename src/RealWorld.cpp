@@ -29,7 +29,7 @@ std::pair<std::vector<int>, double> RealWorld::solveTSP(Graph<int> &graph, int s
         }        current = next_node;
     }
     if (isnan(total_dist)  || isinf(total_dist)) {
-        throw invalid_argument("Graph is not connected");
+        cout << "Graph is not connected" << endl;
     }
     return {path, total_dist};
 }

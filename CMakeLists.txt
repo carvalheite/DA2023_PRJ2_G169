@@ -5,4 +5,5 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(DA2023_PRJ2_G169 src/main.cpp
         src/FileReader.cpp
-        src/Menu.cpp)
+        src/Menu.cpp
+        src/RealWorld.cpp)
