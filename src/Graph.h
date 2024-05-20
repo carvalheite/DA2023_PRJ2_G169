@@ -38,6 +38,7 @@ public:
     std::string getLabel() const;
     Edge<T> *getPath() const;
     std::vector<Edge<T> *> getIncoming() const;
+    Edge<T> *getEdge(T in) const;
 
     void setInfo(T info);
     void setVisited(bool visited);
@@ -75,6 +76,8 @@ protected:
 
     void deleteEdge(Edge<T> *edge);
 };
+
+
 
 /********************** Edge  ****************************/
 
@@ -368,6 +371,16 @@ double Vertex<T>::haversineDistance(Vertex<T> *dest) {
     return 6371000 * c;
     }
 
+
+template<class T>
+Edge<T> *Vertex<T>::getEdge(T in) const {
+    for (auto e : adj) {
+        if (e->getDest()->getInfo() == in) {
+            return e;
+        }
+    }
+    return nullptr;
+}
 
 /********************** Edge  ****************************/
 
