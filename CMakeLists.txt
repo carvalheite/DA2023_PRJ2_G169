@@ -13,5 +13,5 @@ add_executable(DA2023_PRJ2_G169 src/main.cpp
         src/2approximation.h
         src/Menu.cpp
         src/RealWorld.cpp
-        src/NearestNeighbor.h)
+)
 

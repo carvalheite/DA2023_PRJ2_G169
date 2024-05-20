@@ -12,6 +12,11 @@
 #include "FileReader.h"
 #include "Graph.h"
 #include "RealWorld.h"
+#include "NearestNeighbor.h"
+#include <chrono>
+#include "Timer.h"
+#include "2approximation.h"
+#include "backtraking.h"
 using namespace std;
 
 class Menu {
@@ -66,3 +71,5 @@ public:
 
 
 #endif //DA2023_PRJ2_G169_MENU_H
+
+
